@@ -1,0 +1,36 @@
+<!-- Local rules -->
+
+<!-- Modify it at your will. -->
+<!-- Copyright (C) 2015, Wazuh Inc. -->
+
+<!-- Example -->
+<group name="local,syslog,sshd,">
+
+  <!--
+  Dec 10 01:02:02 host sshd[1234]: Failed none for root from 1.1.1.1 port 1066 ssh2
+  -->
+<rule id="100001" level="12" ignore="60">
+  <if_group>windows</if_group>
+  <match>clientes.txt</match>
+  <description>Informax: Acceso detectado a la carpeta de clientes (Fuga de datos)</description>
+</rule>
+
+  <rule id="100002" level="12">
+    <if_sid>100001</if_sid>
+    <time>16:00-14:00</time>
+    <description>Informax: Acceso a clientes en descanso (Fuga de datos)</description>
+  </rule>
+
+  <rule id="100003" level="12">
+    <if_sid>100001</if_sid>
+    <time>19:00-09:00</time>
+    <description>Informax: Acceso a clientes fuera de turno (Fuga de datos)</description>
+  </rule>
+
+  <rule id="100004" level="12">
+    <if_sid>100001</if_sid>
+    <weekday>weekends</weekday>
+    <description>Informax: Acceso a clientes en fin de semana (Fuga de datos)</description>
+  </rule>
+
+</group>
