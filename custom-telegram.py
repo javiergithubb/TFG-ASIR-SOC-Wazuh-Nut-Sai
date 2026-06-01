@@ -17,8 +17,9 @@ agent = alert.get('agent', {}).get('name', 'N/A')
 mensaje = f"🚨 ALERTA DE SEGURIDAD 🚨\nNivel: {level}\nEquipo: {agent}\nDetalle: {description}"
 
 # Enviar a Telegram
-TOKEN = "8616255944:AAG2rCUaRL26oPEr9sGv8pXMCNG3V7WgzNk"
-CHAT_ID = "838464469"
+# Valores reales de token y chat_id no expuestos por seguridad.
+TOKEN = "TU_TOKEN_API_AQUI"
+CHAT_ID = "TU_CHAT_ID_AQUI"
 url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
 payload = {"chat_id": CHAT_ID, "text": mensaje}
 
